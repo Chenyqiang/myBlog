@@ -26,19 +26,29 @@ module.exports = function(app){
 			error:req.flash('error').toString()
 		});
 	});
+	/* 存在问题
+	app.get('/reg/checkName',function(req,res){
+		// req.query 获取URL的查询参数串
+		var name = req.query.name;
+		User.get(name , function(err,user){
+			if (err) {
+				req.flash('error',err);
+				return res.redirect('/');
+			}
+			if (user) {
+				return "true";
+			}
+			return "false";
+		});
+	});
+	*/
 	app.get('/reg', checkNotLogin);
 	app.post('/reg',function(req,res){
-		var name = req.body.name,
-		password = req.body.password,
-		password_re = req.body['password-repeat'];
-		// 检查两次输入的密码是否一致
-		if (password_re != password) {
-			req.flash('error','两次密码不一致');
-			return res.redirect('/reg');
-		}
+		var name = req.body.name;
+		var password = req.body.password;
 		// 生成密码的 md5 值
-		var md5 = crypto.createHash('md5'),
-		password = md5.update(req.body.password).digest('hex');
+		var md5 = crypto.createHash('md5');
+		var password = md5.update(req.body.password).digest('hex');
 		var newUser = new User({
 			name : name ,
 			password : password,

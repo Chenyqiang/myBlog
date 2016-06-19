@@ -1,9 +1,57 @@
 <%- include header %>
-<form method="post">
-  用户名：  <input type="text" name="name"/><br />
-  密码：    <input type="password" name="password"/><br />
-  确认密码：<input type="password" name="password-repeat"/><br />
-  邮箱：    <input type="email" name="email"/><br />
-           <input type="submit" value="注册"/>
+<form class="form-horizontal" role="form" method="post" id="regFrom">
+   <div class="form-group">
+      <div class="col-sm-7">
+         <input type="text" class="form-control" id="name"  name="name"
+            placeholder="请输入用户名..." autofocus="autofocus" maxlength="20">
+      </div>
+      <div class="col-sm-7">
+         <input type="password" class="form-control" id="password" name="password"
+            placeholder="请输入密码..." maxlength="10">
+      </div>
+      <div class="col-sm-7">
+         <input type="password" class="form-control" id="password_repeat" name="password_repeat"
+            placeholder="请确认密码..." maxlength="10">
+      </div>
+      <div class="col-sm-7">
+         <input type="email" class="form-control" id="email" name="email"
+            placeholder="请输入邮箱...">
+      </div>
+      <div class="col-sm-offset-5 col-sm-7">
+         <button type="submit" class="btn btn-success"> 注 册 </button>
+      </div>
+   </div>
+   </div>
 </form>
+<script type="text/javascript" src="/jquery-validation/jquery.validate.min.js" ></script>
+<script type="text/javascript" src="/jquery-validation/messages_bs_zh.js" ></script>
+<script>
+$().ready(function() {
+	  $("#regFrom").validate({
+	  	onkeyup:false,
+	  	rules:{
+	  		name: {
+	        required: true
+//	        remote:'/reg/checkName' java 中这样写结合Controller层返回"true"or"false"即可，在nodejs还未完成
+	      },
+	      password: {
+	        required: true,
+	        minlength: 6
+	      },
+	      password_repeat:{
+	      	required:true,
+	      	minlength:6,
+	      	equalTo:"#password"
+	      },
+	      email:{
+	      	required:true,
+	      	email:true
+	      }
+	  	},
+      submitHandler:function(form){
+        form.submit();
+      }  
+	});
+});
+</script>
 <%- include footer %>

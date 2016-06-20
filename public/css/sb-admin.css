@@ -4,6 +4,13 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+ 
+ *{padding:0;margin:0;}
+body{font-size:14px;font-family:"Microsoft YaHei";}
+article{font-size:16px;}
+form input{margin-bottom:5px ;}
+.info{font-size:14px;}
+ 
 /* Global Styles */
 
 body {

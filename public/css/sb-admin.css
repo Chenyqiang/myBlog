@@ -10,6 +10,7 @@ body{font-size:14px;font-family:"Microsoft YaHei";}
 article{font-size:16px;}
 form input{margin-bottom:5px ;}
 .info{font-size:14px;}
+/*#alert-message{z-index:999;filter:alpha(opacity=50);position:absolute;}*/
  
 /* Global Styles */
 

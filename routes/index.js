@@ -17,7 +17,7 @@ module.exports = function(app){
 			});
 		});
 	});
-	app.get('/reg', checkNotLogin);
+	//app.get('/reg', checkNotLogin);
 	app.get('/reg',function(req,res){
 		res.render('reg',{
 			title:'注册',
@@ -42,7 +42,7 @@ module.exports = function(app){
 		});
 	});
 	*/
-	app.get('/reg', checkNotLogin);
+	//app.get('/reg', checkNotLogin);
 	app.post('/reg',function(req,res){
 		var name = req.body.name;
 		var password = req.body.password;
@@ -77,7 +77,7 @@ module.exports = function(app){
 			});
 		});
 	});
-	app.get('/login', checkNotLogin);
+	//app.get('/login', checkNotLogin);
 	app.get('/login',function(req,res){
 		res.render('login',{
 			title:'登录',
@@ -86,7 +86,7 @@ module.exports = function(app){
 			error:req.flash('error').toString()
 		});
 	});
-	app.post('/login', checkNotLogin);
+	//app.post('/login', checkNotLogin);
 	app.post('/login',function(req,res){
 		// 生成密码的md5值
 		var md5 = crypto.createHash('md5');
@@ -130,7 +130,7 @@ module.exports = function(app){
 			res.redirect('/');
 		});
 	});
-	app.get('/logout', checkLogin);
+	//app.get('/logout', checkLogin);
 	app.get('/logout',function(req,res){
 		req.session.user = null;
 		req.flash('success', '登出成功!');

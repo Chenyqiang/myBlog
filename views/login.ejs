@@ -20,12 +20,20 @@
 		</div>
         <!-- /.row -->
 
-        <div class="row">
+        <div class="row" id="alert-message">
             <div class="col-lg-12">
-                <div class="alert alert-info alert-dismissable">
+			<% if(success) { %>
+			  <div class="alert alert-info alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <i class="fa fa-info-circle"></i>  <strong>Like SB Admin?</strong> Try out for additional features!
-                </div>
+                    <i class="fa fa-info-circle"></i>  <strong><%= success %></strong> Try out for additional features!
+              </div>
+			<% } %>
+			<% if(error) { %>
+				<div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <i class="fa fa-info-circle"></i>  <strong><%= error %></strong> Try out for additional features!
+              </div>
+			<% } %>
             </div>
         </div>
         <!-- /.row -->
